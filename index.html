@@ -14,6 +14,14 @@
       integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -25,112 +33,378 @@
       crossorigin="anonymous"
     ></script>
     <style>
+      :root {
+        --primary: #00c2a6;
+        --primary-dark: #089778;
+        --secondary: #f8f9fa;
+        --accent: #ff6b6b;
+        --text-light: #ffffff;
+        --text-dark: #343a40;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f5f7f9;
+        color: var(--text-dark);
+        line-height: 1.6;
+      }
+
       .bg-green {
-        background-color: #00c2a6;
+        background-color: var(--primary);
+        border-radius: 12px;
+        transition: var(--transition);
       }
+
       .bg-dark-green {
-        background-color: #089778;
+        background-color: var(--primary-dark);
+        border-radius: 10px;
+        transition: var(--transition);
       }
+
       .btn-green {
-        background-color: #00ad88;
+        background-color: var(--primary-dark);
         color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 20px;
+        font-weight: 500;
+        transition: var(--transition);
       }
+
       .btn-green:hover {
-        background-color: #089778;
+        background-color: #067d63;
         color: white;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow);
+      }
+
+      header {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        padding: 1.5rem 0;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      header h1 {
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin: 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .book-icon {
+        margin-right: 12px;
+        width: 32px;
+        height: 32px;
+        display: inline-flex;
+      }
+
+      section {
+        margin-bottom: 2rem;
+        transition: var(--transition);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      h2 {
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        display: inline-block;
+      }
+
+      .form-control {
+        border-radius: 8px;
+        padding: 12px;
+        border: 1px solid #e0e0e0;
+        transition: var(--transition);
+      }
+
+      .form-control:focus {
+        box-shadow: 0 0 0 3px rgba(0, 194, 166, 0.25);
+        border-color: var(--primary);
+      }
+
+      .form-label {
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
+
+      .book-item {
+        background-color: var(--primary-dark);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .book-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .book-item h3 {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        font-size: 1.25rem;
+      }
+
+      .book-item p {
+        margin-bottom: 0.5rem;
+        opacity: 0.9;
+      }
+
+      .book-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+        flex-wrap: wrap;
+      }
+
+      .btn-book {
+        padding: 8px 15px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: var(--transition);
+      }
+
+      .btn-book:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-outline-light {
+        border: 1px solid rgba(255, 255, 255, 0.5);
+      }
+
+      .btn-outline-light:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .search-container {
+        position: relative;
+      }
+
+      .search-icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #adb5bd;
+        z-index: 10;
+      }
+
+      #searchBookTitle {
+        padding-left: 40px;
+      }
+
+      .section-title-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .book-count {
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 2rem;
+        opacity: 0.7;
+      }
+
+      .empty-state i {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      @media (max-width: 768px) {
+        .book-actions {
+          flex-direction: column;
+        }
+
+        .btn-book {
+          width: 100%;
+        }
+      }
+
+      /* Animasi */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fade-in {
+        animation: fadeIn 0.5s ease forwards;
       }
     </style>
   </head>
   <body>
-    <header class="bg-green p-3 mb-5 shadow">
-      <h1 class="text-white px-3">Bookshelf App</h1>
+    <header class="shadow">
+      <div class="container">
+        <h1 class="text-white px-3 pb-2">
+          <svg
+            class="book-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 19.5C4 18.837 4.26339 18.2011 4.73223 17.7322C5.20107 17.2634 5.83696 17 6.5 17H20"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M6.5 2H20V22H6.5C5.83696 22 5.20107 21.7366 4.73223 21.2678C4.26339 20.7989 4 20.163 4 19.5V4.5C4 3.83696 4.26339 3.20107 4.73223 2.73223C5.20107 2.26339 5.83696 2 6.5 2Z"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          Bookshelf App
+        </h1>
+      </div>
     </header>
 
     <main class="container d-flex flex-column align-items-center">
       <section
-        class="bg-green rounded p-4 py-5 mb-5 text-light shadow row col-10"
+        class="bg-green p-4 py-5 mb-5 text-light shadow row col-md-10 col-12 animate-fade-in"
       >
-        <h2>Tambah Buku Baru</h2>
+        <h2><i class="fas fa-plus-circle me-2"></i>Tambah Buku Baru</h2>
         <form id="bookForm" data-testid="bookForm">
           <div class="mb-3">
             <label for="bookFormTitle" class="form-label">Judul</label>
-            <input
-              id="bookFormTitle"
-              type="text"
-              required
-              data-testid="bookFormTitleInput"
-              class="form-control"
-            />
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-book"></i></span>
+              <input
+                id="bookFormTitle"
+                type="text"
+                required
+                data-testid="bookFormTitleInput"
+                class="form-control"
+                placeholder="Masukkan judul buku"
+              />
+            </div>
           </div>
           <div class="mb-3">
             <label for="bookFormAuthor" class="form-label">Penulis</label>
-            <input
-              id="bookFormAuthor"
-              type="text"
-              required
-              data-testid="bookFormAuthorInput"
-              class="form-control"
-            />
+            <div class="input-group">
+              <span class="input-group-text"
+                ><i class="fas fa-user-edit"></i
+              ></span>
+              <input
+                id="bookFormAuthor"
+                type="text"
+                required
+                data-testid="bookFormAuthorInput"
+                class="form-control"
+                placeholder="Masukkan nama penulis"
+              />
+            </div>
           </div>
           <div class="mb-3">
             <label for="bookFormYear" class="form-label">Tahun</label>
-            <input
-              id="bookFormYear"
-              type="number"
-              required
-              data-testid="bookFormYearInput"
-              class="form-control"
-            />
+            <div class="input-group">
+              <span class="input-group-text"
+                ><i class="fas fa-calendar-alt"></i
+              ></span>
+              <input
+                id="bookFormYear"
+                type="number"
+                required
+                data-testid="bookFormYearInput"
+                class="form-control"
+                placeholder="Masukkan tahun terbit"
+              />
+            </div>
           </div>
-          <div class="form-check mb-3">
-            <label for="bookFormIsComplete" class="form-label"
-              >Selesai dibaca</label
-            >
+          <div class="form-check mb-4">
             <input
               id="bookFormIsComplete"
               type="checkbox"
               data-testid="bookFormIsCompleteCheckbox"
               class="form-check-input"
             />
+            <label for="bookFormIsComplete" class="form-check-label"
+              >Selesai dibaca</label
+            >
           </div>
           <button
             id="bookFormSubmit"
             type="submit"
             data-testid="bookFormSubmitButton"
-            class="btn btn-green shadow-sm py-2"
+            class="btn btn-green shadow-sm py-2 w-100"
           >
+            <i class="fas fa-save me-2"></i>
             Masukkan Buku ke rak <span>Belum selesai dibaca</span>
           </button>
         </form>
       </section>
 
-      <section class="bg-green rounded p-4 mb-5 text-light shadow row col-10">
-        <h2>Cari Buku</h2>
-        <form
-          id="searchBook"
-          data-testid="searchBookForm"
-          class="input-group mb-3"
-        >
-          <label for="searchBookTitle" class="form-label col-12">Judul</label>
-          <input
-            id="searchBookTitle"
-            type="text"
-            data-testid="searchBookFormTitleInput"
-            class="form-control rounded-start shadow-sm"
-          />
+      <section
+        class="bg-green p-4 mb-5 text-light shadow row col-md-10 col-12 animate-fade-in"
+      >
+        <h2><i class="fas fa-search me-2"></i>Cari Buku</h2>
+        <form id="searchBook" data-testid="searchBookForm" class="mb-3">
+          <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input
+              id="searchBookTitle"
+              type="text"
+              data-testid="searchBookFormTitleInput"
+              class="form-control rounded shadow-sm"
+              placeholder="Cari judul buku..."
+            />
+          </div>
           <button
             id="searchSubmit"
             type="submit"
             data-testid="searchBookFormSubmitButton"
-            class="btn btn-green px-5 shadow-sm"
+            class="btn btn-green shadow-sm py-2 mt-3 w-100"
           >
-            Cari
+            <i class="fas fa-search me-2"></i>Cari
           </button>
         </form>
       </section>
 
-      <section class="bg-green rounded p-4 mb-5 text-light shadow row col-10">
-        <h2>Belum selesai dibaca</h2>
+      <section
+        class="bg-green p-4 mb-5 text-light shadow row col-md-10 col-12 animate-fade-in"
+      >
+        <div class="section-title-container">
+          <h2><i class="fas fa-book-reader me-2"></i>Belum selesai dibaca</h2>
+          <span class="book-count">1 buku</span>
+        </div>
 
         <div id="incompleteBookList" data-testid="incompleteBookList">
           <!-- 
@@ -140,70 +414,96 @@
           <div
             data-bookid="123123123"
             data-testid="bookItem"
-            class="bg-dark-green rounded p-3 mb-3 text-light shadow"
+            class="book-item shadow"
           >
             <h3 data-testid="bookItemTitle">Judul Buku 1</h3>
-            <p data-testid="bookItemAuthor">Penulis: Penulis Buku 1</p>
-            <p data-testid="bookItemYear">Tahun: 2030</p>
-            <div>
+            <p data-testid="bookItemAuthor">
+              <i class="fas fa-user me-2"></i>Penulis: Penulis Buku 1
+            </p>
+            <p data-testid="bookItemYear">
+              <i class="fas fa-calendar me-2"></i>Tahun: 2030
+            </p>
+            <div class="book-actions">
               <button
                 data-testid="bookItemIsCompleteButton"
-                class="btn btn-outline-light shadow-sm py-2"
+                class="btn btn-outline-light btn-book shadow-sm"
               >
-                Selesai dibaca
+                <i class="fas fa-check-circle"></i> Selesai dibaca
               </button>
               <button
                 data-testid="bookItemDeleteButton"
-                class="btn btn-outline-light shadow-sm py-2"
+                class="btn btn-outline-light btn-book shadow-sm"
               >
-                Hapus Buku
+                <i class="fas fa-trash-alt"></i> Hapus Buku
               </button>
               <button
                 data-testid="bookItemEditButton"
-                class="btn btn-outline-light shadow-sm py-2"
+                class="btn btn-outline-light btn-book shadow-sm"
               >
-                Edit Buku
+                <i class="fas fa-edit"></i> Edit Buku
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="bg-green rounded p-4 mb-5 text-light shadow row col-10">
-        <h2>Selesai dibaca</h2>
+      <section
+        class="bg-green p-4 mb-5 text-light shadow row col-md-10 col-12 animate-fade-in"
+      >
+        <div class="section-title-container">
+          <h2><i class="fas fa-check-double me-2"></i>Selesai dibaca</h2>
+          <span class="book-count">1 buku</span>
+        </div>
 
         <div id="completeBookList" data-testid="completeBookList">
           <!-- 
             Ini adalah struktur HTML untuk masing-masing buku.
             Pastikan susunan elemen beserta atribut data-testid menyesuaikan seperti contoh ini.
           -->
-          <div data-bookid="456456456" data-testid="bookItem">
+          <div
+            data-bookid="456456456"
+            data-testid="bookItem"
+            class="book-item shadow"
+          >
             <h3 data-testid="bookItemTitle">Judul Buku 2</h3>
-            <p data-testid="bookItemAuthor">Penulis: Penulis Buku 2</p>
-            <p data-testid="bookItemYear">Tahun: 2030</p>
-            <div>
+            <p data-testid="bookItemAuthor">
+              <i class="fas fa-user me-2"></i>Penulis: Penulis Buku 2
+            </p>
+            <p data-testid="bookItemYear">
+              <i class="fas fa-calendar me-2"></i>Tahun: 2030
+            </p>
+            <div class="book-actions">
               <button
                 data-testid="bookItemIsCompleteButton"
-                class="btn btn-green shadow-sm py-2"
+                class="btn btn-outline-light btn-book shadow-sm"
               >
-                Selesai dibaca
+                <i class="fas fa-undo"></i> Belum selesai dibaca
               </button>
               <button
                 data-testid="bookItemDeleteButton"
-                class="btn btn-green shadow-sm py-2"
+                class="btn btn-outline-light btn-book shadow-sm"
               >
-                Hapus Buku
+                <i class="fas fa-trash-alt"></i> Hapus Buku
               </button>
               <button
                 data-testid="bookItemEditButton"
-                class="btn btn-green shadow-sm py-2"
+                class="btn btn-outline-light btn-book shadow-sm"
               >
-                Edit Buku
+                <i class="fas fa-edit"></i> Edit Buku
               </button>
             </div>
           </div>
         </div>
       </section>
     </main>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+      <div class="container text-center">
+        <p class="mb-0">
+          Bookshelf App &copy; 2025 | Dibuat dengan
+          <i class="fas fa-heart text-danger"></i>
+        </p>
+      </div>
+    </footer>
   </body>
 </html>
